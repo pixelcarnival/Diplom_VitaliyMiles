@@ -1,40 +1,54 @@
 import React, { useState } from 'react'
-import api from '../api'
+import api from '../api/fake.api'
+import Pagination from './pagination'
+import { paginate } from '../utils/paginate'
+import AuthorsTable from './authorsTable'
 
 const Authors = () => {
-    // const users = api.users.fetchAll()
     const [users] = useState(api.users.fetchAll())
+    const [sort, setSort] = useState({ iter: 'name', order: -1 })
+    // console.log(sort)
+    const count = users.length
+
+    const pageSize = 10
+    const [currentPage, setCurrentPage] = useState(1)
+
+    const handlePageChange = (pageIndex) => {
+        setCurrentPage(pageIndex)
+    }
+
+    const handleSort = (item) => {
+        console.log('r', item)
+
+        setSort({ iter: item, order: -1 })
+    }
+    const sortedAuthors = users.sort((a, b) => {
+        // if (b.format.name < a.format.name) {
+        //     return -1
+        // }
+        // if (b.format.name > a.format.name) {
+        //     return 1
+        // }
+        // return 0
+        if (typeof a[sort.iter] && typeof b[sort.iter] === typeof Object) {
+            return ''
+        }
+
+        return a[sort.iter] > b[sort.iter] ? sort.order : ''
+    })
+
+    const userCrop = paginate(sortedAuthors, currentPage, pageSize)
 
     return (
-        <table className="table">
-            <thead>
-                <tr>
-                    <th scope="col">Имя</th>
-                    <th scope="col">Жанр</th>
-                    <th scope="col">Тип текстов</th>
-                    <th scope="col">Рейтинг</th>
-                </tr>
-            </thead>
-            <tbody>
-                {users.map((user) => (
-                    <tr key={user._id}>
-                        <td>{user.name}</td>
-                        <td>
-                            {user.genres.map((item) => (
-                                <span
-                                    className="badge m-1 text-bg-light"
-                                    key={item._id}
-                                >
-                                    {item.name}
-                                </span>
-                            ))}
-                        </td>
-                        <td>{user.format.name}</td>
-                        <td>{user.rating}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+        <div>
+            <AuthorsTable users={userCrop} onSort={handleSort} />
+            <Pagination
+                itemCounts={count}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+            />
+        </div>
     )
 }
 
