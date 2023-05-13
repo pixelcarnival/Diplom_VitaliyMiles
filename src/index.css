@@ -52,12 +52,11 @@ header {
     background: #fbfaf8;
     transition: 0.5s;
 }
-.container {
+.contain {
     background: #fbfaf8;
     max-width: 64rem;
     height: 1000px;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 2rem;
     margin: 0 auto;
 }
 
