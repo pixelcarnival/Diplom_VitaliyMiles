@@ -5,6 +5,7 @@ import Main from './components/main'
 import Blog from './components/blog'
 import Authors from './components/authors'
 import NotFound from './components/notFound'
+
 function App() {
     return (
         <div>

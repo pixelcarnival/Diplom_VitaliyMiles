@@ -54,9 +54,15 @@ header {
 }
 .container {
     background: #fbfaf8;
-    max-width: 60rem;
-    height: 800px;
+    max-width: 64rem;
+    height: 1000px;
     padding-left: 2rem;
     padding-right: 2rem;
     margin: 0 auto;
+}
+
+.colorText {
+    color: #796b62;
+    font-size: 20px;
+    font-weight: bold;
 }
