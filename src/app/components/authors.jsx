@@ -7,7 +7,7 @@ import AuthorsTable from './authorsTable'
 const Authors = () => {
     const [users] = useState(api.users.fetchAll())
     const [sort, setSort] = useState({ iter: 'name', order: -1 })
-    // console.log(sort)
+
     const count = users.length
 
     const pageSize = 10
@@ -18,20 +18,16 @@ const Authors = () => {
     }
 
     const handleSort = (item) => {
-        console.log('r', item)
-
-        setSort({ iter: item, order: -1 })
+        setSort(item)
     }
     const sortedAuthors = users.sort((a, b) => {
-        // if (b.format.name < a.format.name) {
-        //     return -1
-        // }
-        // if (b.format.name > a.format.name) {
-        //     return 1
-        // }
-        // return 0
-        if (typeof a[sort.iter] && typeof b[sort.iter] === typeof Object) {
-            return ''
+        if (sort.iter === 'format.name') {
+            if (b.format.name < a.format.name) {
+                return -1
+            }
+            if (b.format.name > a.format.name) {
+                return 1
+            }
         }
 
         return a[sort.iter] > b[sort.iter] ? sort.order : ''
@@ -41,7 +37,11 @@ const Authors = () => {
 
     return (
         <div>
-            <AuthorsTable users={userCrop} onSort={handleSort} />
+            <AuthorsTable
+                users={userCrop}
+                onSort={handleSort}
+                selectedSort={sort}
+            />
             <Pagination
                 itemCounts={count}
                 pageSize={pageSize}

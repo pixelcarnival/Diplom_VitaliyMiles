@@ -22,7 +22,7 @@ const NavBar = () => {
                     </div>
                 </header>
             </div>
-            <main className="container">
+            <main className="contain">
                 <Outlet />
             </main>
         </div>
