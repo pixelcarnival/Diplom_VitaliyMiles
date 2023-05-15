@@ -7,8 +7,8 @@ const Author = ({ name, genres, format, rating }) => {
         <tr>
             <td>{name}</td>
             <td>
-                {genres.map((item) => (
-                    <Genre key={item._id} {...item} />
+                {genres.map((genre) => (
+                    <Genre key={genre._id} {...genre} />
                 ))}
             </td>
             <td>{format.name}</td>
