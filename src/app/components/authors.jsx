@@ -7,11 +7,8 @@ import AuthorsTable from './authorsTable'
 const Authors = () => {
     const [users] = useState(api.users.fetchAll())
     const [sort, setSort] = useState({ iter: 'name', order: -1 })
-
-    const count = users.length
-
-    const pageSize = 10
     const [currentPage, setCurrentPage] = useState(1)
+    const pageSize = 10
 
     const handlePageChange = (pageIndex) => {
         setCurrentPage(pageIndex)
@@ -20,36 +17,41 @@ const Authors = () => {
     const handleSort = (item) => {
         setSort(item)
     }
-    const sortedAuthors = users.sort((a, b) => {
-        if (sort.iter === 'format.name') {
-            if (b.format.name < a.format.name) {
-                return -1
+
+    if (users) {
+        const count = users.length
+        const sortedAuthors = users.sort((a, b) => {
+            if (sort.path === 'format.name') {
+                if (b.format.name < a.format.name) {
+                    return -1
+                }
+                if (b.format.name > a.format.name) {
+                    return 1
+                }
             }
-            if (b.format.name > a.format.name) {
-                return 1
-            }
-        }
 
-        return a[sort.iter] > b[sort.iter] ? sort.order : ''
-    })
+            return a[sort.path] > b[sort.path] ? sort.order : ''
+        })
 
-    const userCrop = paginate(sortedAuthors, currentPage, pageSize)
+        const userCrop = paginate(sortedAuthors, currentPage, pageSize)
 
-    return (
-        <div>
-            <AuthorsTable
-                users={userCrop}
-                onSort={handleSort}
-                selectedSort={sort}
-            />
-            <Pagination
-                itemCounts={count}
-                pageSize={pageSize}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-            />
-        </div>
-    )
+        return (
+            <div>
+                <AuthorsTable
+                    users={userCrop}
+                    onSort={handleSort}
+                    selectedSort={sort}
+                />
+                <Pagination
+                    itemCounts={count}
+                    pageSize={pageSize}
+                    currentPage={currentPage}
+                    onPageChange={handlePageChange}
+                />
+            </div>
+        )
+    }
+    return 'Loading...'
 }
 
 export default Authors

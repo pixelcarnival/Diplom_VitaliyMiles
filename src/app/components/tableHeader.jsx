@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 const TableHeader = ({ onSort, selectedSort, columns }) => {
     const handleSort = (item) => {
         if (selectedSort.path === item) {
-            // console.log('sort.path-', sort.path)
-            // console.log('item-', item)
+            console.log('selectedSort.path-', selectedSort.path)
+            console.log('item-', item)
             onSort({
                 ...selectedSort,
                 order: selectedSort.order === -1 ? 1 : -1
@@ -13,6 +13,7 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
         } else {
             onSort({ path: item, order: -1 })
         }
+        console.log('selectedSort.order-', selectedSort.order)
     }
     return (
         <thead>
@@ -22,10 +23,10 @@ const TableHeader = ({ onSort, selectedSort, columns }) => {
                         key={column}
                         onClick={
                             columns[column].path
-                                ? () => handleSort(columns[column].iter)
+                                ? () => handleSort(columns[column].path)
                                 : undefined
                         }
-                        {...{ role: columns[column].iter && 'button' }}
+                        {...{ role: columns[column].path && 'button' }}
                         scope="col"
                     >
                         {columns[column].name}

@@ -23,9 +23,7 @@ const Main = () => {
                             is a little bit longer.
                         </p>
                         <p className="text-end">
-                            <small className="text-muted">
-                                Last updated 3 mins ago
-                            </small>
+                            <small className="text-muted">Имя автора</small>
                         </p>
                     </div>
                 </div>
@@ -35,16 +33,24 @@ const Main = () => {
 }
 
 export default Main
-// {
-//     /* <h1>
-//                     {users.map((user) => (
-//                         <div className="col-md-4 mb-3" key={user._id}>
-//                             <h1>
-//                                 {user.texts.map((us) => (
-//                                     <h3 key={us._id}>{us.title}</h3>
-//                                 ))}
-//                             </h1>
-//                         </div>
+
+/* <h1>
+                    {users.map((user) => (
+                        <div className="col-md-4 mb-3" key={user._id}>
+                            <h1>
+                                {user.texts.map((us) => (
+                                    <h3 key={us._id}>{us.title}</h3>
+                                ))}
+                            </h1>
+                        </div>
+                    ))}
+                </h1> */
+// {/* <tbody>
+//             {data.map((item) => (
+//                 <tr key={item._id}>
+//                    {Object.keys(columns).map((column) => (
+//                         <td key={column}>{item[columns[column].path]}</td>
 //                     ))}
-//                 </h1> */
-// }
+//                 </tr>
+//             ))}
+//         </tbody> */}

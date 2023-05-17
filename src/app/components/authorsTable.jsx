@@ -1,26 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import Author from './author'
-import TableHeader from './tableHeader'
-import TableBody from './tableBody'
+import GenresList from './GenresList'
+import Table from './table'
 
-const AuthorsTable = ({ users, onSort, selectedSort, ...rest }) => {
+const AuthorsTable = ({ users, onSort, selectedSort }) => {
     const columns = {
         name: { path: 'name', name: 'Имя' },
-        genres: { name: 'Жанр' },
+        genres: {
+            name: 'Жанр',
+            component: (user) => <GenresList genres={user.genres} />
+        },
         format: { path: 'format.name', name: 'Тип текста' },
         rating: { path: 'rating', name: 'Рейтинг' }
     }
     return (
-        <table className="table table-striped">
-            <TableHeader {...{ onSort, selectedSort, columns }} />
-            <TableBody {...{ columns, data: users }} />
-            {/* <tbody>
-                {users.map((user) => (
-                    <Author {...rest} key={user._id} {...user} />
-                ))}
-            </tbody> */}
-        </table>
+        <Table
+            onSort={onSort}
+            selectedSort={selectedSort}
+            columns={columns}
+            data={users}
+        />
     )
 }
 AuthorsTable.propTypes = {
