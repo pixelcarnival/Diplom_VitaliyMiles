@@ -1,6 +1,6 @@
 import React from 'react'
-import Genre from './genre'
 import PropTypes from 'prop-types'
+import Genre from './genre'
 
 const Author = ({ name, genres, format, rating }) => {
     return (
