@@ -7,7 +7,7 @@ import SelectField from '../common/form/selectField'
 const RegisterForm = () => {
     const [data, setData] = useState({ email: '', password: '', format: '' })
     const [errors, setErrors] = useState({})
-    const [formats, setFormats] = useState(api.formats.fetchAll())
+    const [formats, setFormats] = useState([])
 
     useEffect(() => {
         api.formats.fetchAll().then((data) => setFormats(data))
@@ -43,7 +43,7 @@ const RegisterForm = () => {
             }
         },
         format: {
-            isRequired: { massage: 'Выберете формат ваших текстов' }
+            isRequired: { massage: 'Выбор формата обязателен' }
         }
     }
 
@@ -84,7 +84,7 @@ const RegisterForm = () => {
                 label="Выберите формат ваших текстов"
                 defaultOption="Выбрать..."
                 options={formats}
-                name="format"
+                // name="format"
                 onChange={handleChange}
                 value={data.formats}
                 error={errors.format}

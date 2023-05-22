@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import api from '../api'
 
 const Main = () => {
-    const [users, setUsers] = useState(api.users.fetchAll())
+    const [users, setUsers] = useState([])
     useEffect(() => {
         api.users.fetchAll().then((data) => setUsers(data))
     }, [])

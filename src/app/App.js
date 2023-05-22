@@ -5,6 +5,7 @@ import Main from '../app/layouts/main'
 import Blog from '../app/layouts/blog'
 import Authors from '../app/layouts/authors'
 import NotFound from '../app/components/ui/notFound'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 function App() {
     return (
