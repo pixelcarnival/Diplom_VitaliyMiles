@@ -2,16 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const TableHeader = ({ onSort, selectedSort, columns }) => {
+    // console.log('onSort-', onSort)
     const handleSort = (item) => {
         if (selectedSort.path === item) {
             console.log('selectedSort.path-', selectedSort.path)
             console.log('item-', item)
             onSort({
                 ...selectedSort,
-                order: selectedSort.order === -1 ? 1 : -1
+                order: selectedSort.order === 'asc' ? 'desc' : 'asc'
             })
         } else {
-            onSort({ path: item, order: -1 })
+            onSort({ path: item, order: 'asc' })
         }
         console.log('selectedSort.order-', selectedSort.order)
     }

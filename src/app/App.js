@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
-import NavBar from './components/NavBar'
-import Login from './components/login'
-import Main from './components/main'
-import Blog from './components/blog'
-import Authors from './components/authors'
-import NotFound from './components/notFound'
+import NavBar from '../app/components/ui/NavBar'
+import Login from '../app/layouts/login'
+import Main from '../app/layouts/main'
+import Blog from '../app/layouts/blog'
+import Authors from '../app/layouts/authors'
+import NotFound from '../app/components/ui/notFound'
 
 function App() {
     return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import GenresList from './GenresList'
-import Table from './table'
+import GenresList from './genre/genresList'
+import Table from '../common/table'
 
 const AuthorsTable = ({ users, onSort, selectedSort }) => {
     const columns = {
