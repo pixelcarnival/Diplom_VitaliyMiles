@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
-import api from '../api/fake.api'
+import React, { useState, useEffect } from 'react'
+import api from '../api'
 import Pagination from '../components/common/pagination'
 import { paginate } from '../utils/paginate'
 import AuthorsTable from '../components/ui/authorsTable'
 
 const Authors = () => {
-    const [users] = useState(api.users.fetchAll())
+    const [users, setUsers] = useState([])
     const [sort, setSort] = useState({ path: 'name', order: 'asc' })
     const [currentPage, setCurrentPage] = useState(1)
     const pageSize = 10
+
+    useEffect(() => {
+        api.users.fetchAll().then((data) => setUsers(data))
+    }, [])
 
     const handlePageChange = (pageIndex) => {
         setCurrentPage(pageIndex)

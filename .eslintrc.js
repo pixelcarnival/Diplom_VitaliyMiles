@@ -10,6 +10,7 @@ module.exports = {
         sourceType: 'module'
     },
     plugins: ['react'],
+
     rules: {
         semi: 0,
         jsxBracketSameLine: 0,

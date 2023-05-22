@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
-import api from '../api/fake.api'
+import React, { useState, useEffect } from 'react'
+import api from '../api'
 
 const Main = () => {
-    const [users] = useState(api.users.fetchAll())
-
+    const [users, setUsers] = useState(api.users.fetchAll())
+    useEffect(() => {
+        api.users.fetchAll().then((data) => setUsers(data))
+    }, [])
     return (
         <div>
             {users.map((user) => (
