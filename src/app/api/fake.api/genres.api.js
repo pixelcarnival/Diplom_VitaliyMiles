@@ -9,7 +9,7 @@ export const genres = {
     scientific: { _id: 'idg79b3754461eb6c', name: 'Научный' }
 }
 
-const fetchAll = () =>
+export const fetchAll = () =>
     new Promise((resolve) => {
         window.setTimeout(function () {
             resolve(genres)
@@ -19,9 +19,9 @@ genres.fetchAll = fetchAll
 
 // genres.fetchAll = fetchAll
 
-export default {
-    fetchAll
-}
+// export default {
+//     fetchAll
+// }
 // export function fetchAll() {
 //     return genres
 // }

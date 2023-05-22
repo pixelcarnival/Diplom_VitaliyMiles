@@ -2473,10 +2473,7 @@ const getById = (id) =>
 
 // users.fetchAll = fetchAll
 
-export default {
-    fetchAll,
-    getById
-}
+export { fetchAll, getById }
 // export function fetchAll() {
 //     return users
 // }
