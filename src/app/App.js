@@ -13,7 +13,7 @@ function App() {
                 <Route path="/" element={<NavBar />}>
                     <Route path="blog" element={<Blog />} />
                     <Route path="authors" element={<Authors />} />
-                    <Route path="login" element={<Login />} />
+                    <Route path="login/:type?" element={<Login />} />
                     <Route index element={<Main />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
